@@ -1102,7 +1102,7 @@ void Commands::processGCode(GCode *com) {
       break;
     case 30:
       { // G30 single probe set Z0
-        uint8_t p = (com->hasP() ? (uint8_t)com->P : 3);
+        uint8_t p = (com->hasP() ? (uint8_t)com->P : 2); // modify: https://github.com/Bougakov/Micromake-D1-3D-printer/blob/master/Installing%20custom%20firmware.md#lets-patch-the-firmware
         if (Printer::runZProbe(p & 1, p & 2) == ILLEGAL_Z_PROBE) {
           GCode::fatalError(PSTR("G29 leveling failed!"));
           break;

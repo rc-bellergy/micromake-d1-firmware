@@ -132,7 +132,7 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
 /* You can write some GCODE to be executed on startup. Use this e.g. to set some 
 pins. Separate multiple GCODEs with \n
 */
-//#define STARTUP_GCODE ""
+#define STARTUP_GCODE "M115\nM119\nG28\nM140 S115\nM105 X0\n\n" // Modify: https://github.com/Bougakov/Micromake-D1-3D-printer/blob/master/Installing%20custom%20firmware.md#startup_gcode
 
 // ##########################################################################################
 // ##                               Calibration                                            ##
@@ -943,7 +943,8 @@ on this endstop.
 #if DRIVE_SYSTEM==DELTA
 /** \brief Delta rod length (mm)
 */
-#define DELTA_DIAGONAL_ROD 210 // mm
+// Modify: https://github.com/Bougakov/Micromake-D1-3D-printer/blob/master/Installing%20custom%20firmware.md#correct-value-for-delta-diagonal-rod
+#define DELTA_DIAGONAL_ROD 217 // mm
 
 
 /*  =========== Parameter essential for delta calibration ===================
@@ -1401,7 +1402,7 @@ to recalibrate z.
 #define Z_PROBE_SPEED 5
 #define Z_PROBE_XY_SPEED 40
 #define Z_PROBE_SWITCHING_DISTANCE 5.0 // Distance to safely switch off probe after it was activated
-#define Z_PROBE_REPETITIONS 1 // Repetitions for probing at one point.
+#define Z_PROBE_REPETITIONS 3 // Repetitions for probing at one point. (Modify: https://github.com/Bougakov/Micromake-D1-3D-printer/blob/master/Installing%20custom%20firmware.md#z_probe_repetitions)
 /** Distance between nozzle and bed when probe triggers. */
 #define Z_PROBE_HEIGHT 0
 /** These scripts are run before resp. after the z-probe is done. Add here code to activate/deactivate probe if needed. */
@@ -1457,13 +1458,14 @@ motorized bed leveling */
    This feature requires a working z-probe and you should have z-endstop at the top not at the bottom.
    The same 3 points are used for the G29 command.
 */
+// Modify: https://github.com/Bougakov/Micromake-D1-3D-printer/blob/master/Installing%20custom%20firmware.md#z_probe_x1
 #define FEATURE_AUTOLEVEL 1
-#define Z_PROBE_X1 0
-#define Z_PROBE_Y1 0
-#define Z_PROBE_X2 0
-#define Z_PROBE_Y2 0
-#define Z_PROBE_X3 4.3
-#define Z_PROBE_Y3 0
+#define Z_PROBE_X1 49.24
+#define Z_PROBE_Y1 8.682
+#define Z_PROBE_X2 -32.139
+#define Z_PROBE_Y2 38.302
+#define Z_PROBE_X3 -8.682
+#define Z_PROBE_Y3 -49.24
 /* Bending correction adds a value to a measured z-probe value. This may be
   required when the z probe needs some force to trigger and this bends the
   bed down. Currently the correction values A/B/C correspond to z probe
@@ -1726,8 +1728,9 @@ and longer beeps for important actions.
 Parameter is delay in microseconds and the second is the number of repetitions.
 Values must be in range 1..255
 */
-#define BEEPER_SHORT_SEQUENCE 2,2
-#define BEEPER_LONG_SEQUENCE 8,8
+// Modify: https://github.com/Bougakov/Micromake-D1-3D-printer/blob/master/Installing%20custom%20firmware.md#beeper
+#define BEEPER_SHORT_SEQUENCE 1,1
+#define BEEPER_LONG_SEQUENCE 2,2
 
 // ###############################################################################
 // ##                         Values for menu settings                          ##
